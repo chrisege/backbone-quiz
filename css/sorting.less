@@ -1,0 +1,28 @@
+
+.firstColumn ul, .secondColumn ul {
+	list-style:none outside none;
+	margin-left:0px;
+}
+
+.firstColumn li, .secondColumn li {
+	border:1px solid #ccc;
+	padding:1em;
+}
+
+.secondColumn li:before{
+	font-family: FontAwesome;
+	content: "\f047";
+	font-size:16px;
+	margin:10px;
+}
+
+.true:before, .false:before {
+	display:none;
+}
+.false {
+	color:red;
+}
+
+.true {
+	color:green;
+}

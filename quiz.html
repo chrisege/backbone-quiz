@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/responsive.min.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/sorting.min.css">
+
+		<script type="text/template" id="quizTemplate">
+			<h1 class="title">
+				<%= title %>
+			</h1>
+			<h2 class="subtitle">
+				<%= subtitle %>
+			</h2>
+			
+			<div class="well" id="questionBox">
+				<div class="pull-right scores">
+					<h4>Score: <span id="score"><%= score %></span> / <span id="possibleScore"><%= possibleScore %></span></h4>
+				</div>
+				<div class="intro">
+					<p><%= introText %></p>
+					<button class="startQuiz btn btn-primary">Start the quiz!</button>
+				</div>
+				<div class="question">
+				
+				</div>
+			</div>			
+		</script>
+
+		<script type="text/template" id="questionTemplate">
+			<h3 class="title">
+				<%= title %>
+			</h3>
+			<h4 class="subtitle">
+				<%= subtitle %>
+			</h4>
+			<div class="row-fluid">
+				<div class="span4 firstColumn">
+					<ul>
+			            <% _.each( firstColumn, function( item ){ %>
+			                <li><%= item %></li>
+						<% }); %>
+					</ul>
+				</div>
+				<div class="span4">
+					<div class="secondColumn"></div>
+					<div class="buttons">
+						<button class="checkResults btn btn-primary">Check Results</button>
+						<button class="nextQuestion btn btn-primary" style="display:none;">Next Question</button>
+					</div>
+					
+				</div>
+			</div>
+
+		</script>
+		
+		<script type="text/template" id="multiQuestionTemplate">
+			<h3 class="title">
+				<%= title %>
+			</h3>
+			<h4 class="subtitle">
+				<%= subtitle %>
+			</h4>
+			<div class="row-fluid">
+				<div class="span4">
+					<%= question %>
+				</div>
+				<div class="span4">
+					<div class="questionCtn">
+						<% _.each( options, function( option ){ %>
+							<label class="radio">
+								<input type="radio" name="options" value="<%= option %>">
+								<%= option %>
+							</label>
+						<% }); %>
+					</div>
+					<div class="answerCtn" style="display:none;">
+						<h3 class="status"></h3>
+						<p><%= explanation %></p>
+					</div>
+					<div class="buttons">
+						<button class="checkResults btn btn-primary">Check Answer</button>
+						<button class="nextQuestion btn btn-primary" style="display:none;">Next Question</button>
+					</div>
+				</div>
+			</div>
+		</script>
+		
+		<script type="text/template" id="answerTemplate">
+				<% _.each( shuffledItems, function( item ){ %>
+		            <li><%= item %></li>
+				<% }); %>
+		</script>
+		
+		<script type="text/template" id="finalScoreTemplate">
+			<h3>Your final score is:</h3>
+			<h1><span id="score"><%= score %></span> / <span id="possibleScore"><%= possibleScore %></span></h1>
+			<h2>Nice Work!</h2>
+			<p>Share this quiz with a friend? (social buttons?)</p>
+		</script>
+
+    </head>
+	<body class="container">
+		
+		<div class="row">
+			<div id="quiz" class="span12">
+				
+			</div>
+			<div id="question" class="span12">
+				
+			</div>
+		</div>
+		
+		
+		<script src="js/vendor/jquery-1.8.3.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.3.min.js"><\/script>')</script>
+		<script src="js/vendor/jquery-ui-1.10.2.custom.min.js"></script>
+		<!-- make jqueryUI sortable work on mobile devices --> 
+		<script src="js/vendor/jquery.ui.touch-punch.min.js"></script> 
+		<script src="js/vendor/lodash.min.js"></script>
+		<script src="js/vendor/backbone.min.js"></script>
+
+		<!-- quiz app starts here -->
+		<script src="js/quiz/models/quizModel.js"></script>
+		<script src="js/quiz/models/questionModel.js"></script>
+		<script src="js/quiz/models/multiQuestionModel.js"></script>
+		<script src="js/quiz/models/answerModel.js"></script>
+		<script src="js/quiz/views/quizView.js"></script>
+		<script src="js/quiz/views/questionView.js"></script>
+		<script src="js/quiz/views/multiQuestionView.js"></script>
+		<script src="js/quiz/views/answerView.js"></script>
+		<script src="js/quiz/collections/questionCollection.js"></script>
+
+		<!-- init script with quiz data --> 
+		<script src="js/quiz.js"></script>
+	</body>
+</html>
