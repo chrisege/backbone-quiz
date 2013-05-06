@@ -12,7 +12,7 @@ backbone-quiz is a quiz application, built for use on the website of the PBS doc
 * [jQuery UI Touch Punch](http://touchpunch.furf.com/) (makes jQuery UI Sortable work on mobile webkit browsers)
 
 ##### Not-really dependencies:
-# the demo version (viewable by opening quiz.html in a browser) uses [Twitter Bootstrap](http://twitter.github.io/bootstrap/) and [Font Awesome](http://fortawesome.github.io/Font-Awesome/).
+the demo version (viewable by opening quiz.html in a browser) uses [Twitter Bootstrap](http://twitter.github.io/bootstrap/) and [Font Awesome](http://fortawesome.github.io/Font-Awesome/).
 
 ### Usage Instructions
 
